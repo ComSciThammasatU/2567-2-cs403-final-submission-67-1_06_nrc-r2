@@ -1,0 +1,145 @@
+<div class="w-full">
+  <main class="p-4 sm:p-6">
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
+      <span class="from-gray-900 to-gray-800">PRODUCT LIST</span>
+    </h1>
+
+    @if (isLoading()) {
+    <div class="flex flex-col items-center justify-center py-10">
+      <div
+        class="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"
+      ></div>
+      <p class="mt-4 text-gray-600 font-medium">Loading products...</p>
+    </div>
+    } @else if (error()) {
+    <div
+      class="mb-6 bg-red-50 flex items-center justify-center gap-4 rounded-lg p-6 text-center shadow-sm"
+      id="errorState"
+    >
+      <div class="flex flex-col items-center justify-center">
+        <div
+          class="text-red-500 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-medium text-red-800">Failed to load products</h3>
+          <p class="text-sm text-red-600 mt-1">
+            An error occurred while loading products. Please try again later.
+          </p>
+          <button
+            (click)="refreshProducts()"
+            class="mt-2 text-sm bg-red-100 hover:bg-red-200 text-red-800 px-3 py-1 rounded-md transition-colors duration-200"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    </div>
+    } @else if (products().length === 0) {
+    <div
+      class="bg-gray-50 rounded-xl p-10 mb-6 flex flex-col items-center justify-center"
+    >
+      <div
+        class="text-gray-400 w-16 h-16 rounded-full flex items-center justify-center mb-3"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold text-gray-700">No products available</h3>
+      <p class="text-gray-500 text-center mt-2 max-w-sm">
+        It seems like there are no products available at the moment. Please
+        check back later or add some products to your list.
+      </p>
+      <button
+        (click)="refreshProducts()"
+        class="mt-5 px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+      >
+        Try Again
+      </button>
+    </div>
+    } @else {
+    <section class="mb-6 sm:mb-10">
+      <div class="relative">
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5 md:gap-7 px-2 sm:px-4 py-4 sm:py-6"
+        >
+          @for (product of products(); track product.productId) {
+          <div
+            class="product-card relative group cursor-pointer"
+            (click)="goToProductDetail(product.productId)"
+          >
+            <div
+              class="w-full h-36 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center overflow-hidden shadow-md relative z-0 transition-all duration-500 group-hover:scale-105"
+            >
+              <!-- Delete button wrapper -->
+              <div class="absolute top-2 left-2 z-20">
+                <button
+                  class="bg-red-500 hover:bg-red-600 text-white rounded-full p-1 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                  (click)="deleteProduct(product.productId, $event)"
+                  title="Delete product"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="absolute w-12 h-12 rounded-full bg-white/10 top-4 right-4 float-bubble-1"
+              ></div>
+              <div
+                class="absolute w-8 h-8 rounded-full bg-white/10 bottom-6 left-6 float-bubble-2"
+              ></div>
+              <div
+                class="absolute w-16 h-16 rounded-full bg-purple-300/10 -bottom-4 -right-4 float-bubble-3"
+              ></div>
+              <span
+                class="text-white text-xl font-semibold relative z-10 transition-all duration-300 text-center px-2"
+              >
+                {{ product.productName }}
+              </span>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </section>
+    }
+  </main>
+</div>
