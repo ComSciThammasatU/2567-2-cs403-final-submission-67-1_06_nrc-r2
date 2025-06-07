@@ -14,6 +14,6 @@
 2. นางสาว กัลยวรรธน์ เฉลิมไทย 649490056 kanyawat.cha@dome.ac.th
    
 Manual / Instructions for your projects starts here !
-# Topic 1
+# วิธีการติดตั้ง
 # Topic 2 
 # Topic 3
