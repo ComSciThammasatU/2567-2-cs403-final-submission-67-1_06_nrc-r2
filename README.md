@@ -58,3 +58,13 @@ npm install --legacy-peer-deps
 ```bash
 ng serve
 ```
+```bash
+ระบบจะรันที่: http://localhost:4200
+```
+## 2. รัน Backend
+### 2.1 เปิด Terminal แล้วรัน Flask app
+
+```bash
+cd BE
+py app.py
+```
