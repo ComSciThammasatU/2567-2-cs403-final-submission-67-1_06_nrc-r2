@@ -5,7 +5,7 @@
 
 **ชื่อโครงงาน (ไทย):** เว็บแอปพลิเคชันวิเคราะห์ความรู้สึกลูกค้าจากข้อความรีวิวสินค้าบนแพลตฟอร์มอีคอมเมิร์ซ 
 
-**Project Title (Eng):** WEB APPLICATION FOR SENTIMENT ANALYSIS OF CUSTOMER’S PRODUCT REVIEWS ON E-COMMERCE PLATFORMS
+**Project Title (Eng):**COMMENTCLARITY WEB APPLICATION FOR SENTIMENT ANALYSIS OF CUSTOMER’S PRODUCT REVIEWS ON E-COMMERCE PLATFORMS
 
 **อาจารย์ที่ปรึกษาโครงงาน:** อ.ดร.นวฤกษ์  ชลารักษ์
 
